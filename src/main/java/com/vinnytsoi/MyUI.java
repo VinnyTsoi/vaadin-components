@@ -21,6 +21,7 @@ import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.CheckBoxGroup;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.Grid;
+import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.RadioButtonGroup;
@@ -46,6 +47,7 @@ public class MyUI extends UI {
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout layout = new VerticalLayout();
+        HorizontalLayout horizontalLayout = new HorizontalLayout();
 
         // layout.setWidth(350, Unit.PIXELS);
 
@@ -244,12 +246,16 @@ public class MyUI extends UI {
         layout.addComponent(studentGrid);
         layout.addComponent(combo);
 
-        layout.addComponent(excludedGroup);
-        layout.addComponent(singleGroup);
-        layout.addComponent(multiGroup);
+        horizontalLayout.addComponent(excludedGroup);
+        horizontalLayout.addComponent(singleGroup);
+        horizontalLayout.addComponent(multiGroup);
+
+        layout.addComponent(horizontalLayout);
 
         layout.addComponent(chbCustomButtons);
         layout.addComponents(chbNormalButtons);
+
+
         
         layout.addComponents(label1);
         layout.addComponent(txtfield1);
