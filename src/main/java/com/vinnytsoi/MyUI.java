@@ -21,6 +21,7 @@ import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.CheckBoxGroup;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.Grid;
+import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
@@ -241,16 +242,25 @@ public class MyUI extends UI {
         tabSheet.getTab(tab1).setClosable(true);
         tabSheet.getTab(tab2).setClosable(true);
 
-        layout.addComponent(tabSheet);
-        layout.addComponent(tree);
-        layout.addComponent(studentGrid);
-        layout.addComponent(combo);
+        // GridLayout
+        GridLayout gridLayout = new GridLayout(2,3);
+        gridLayout.addComponent(tabSheet, 0,0);
+        gridLayout.addComponent(tree, 1,0);
+        gridLayout.addComponent(studentGrid, 0,1,1,1);
+        gridLayout.addComponent(combo);
+        
+        //gridLayout.addComponent(new Button("Register"), 1,1);
+
+        // layout.addComponent(tabSheet);
+        // layout.addComponent(tree);
+        // layout.addComponent(studentGrid);
+        
 
         horizontalLayout.addComponent(excludedGroup);
         horizontalLayout.addComponent(singleGroup);
         horizontalLayout.addComponent(multiGroup);
 
-        layout.addComponent(horizontalLayout);
+        gridLayout.addComponent(horizontalLayout);
 
         layout.addComponent(chbCustomButtons);
         layout.addComponents(chbNormalButtons);
@@ -263,18 +273,16 @@ public class MyUI extends UI {
         layout.addComponent(demoButton);
         
         // layout.addComponent(new Label("&nbsp",ContentMode.HTML));
-
         // layout.addComponents(label2);
-
         // Label gapLabel = new Label();
-
         // gapLabel.setHeight("1em");
-
         // layout.addComponent(gapLabel);
-        
         // layout.addComponents(label3);
         
-        setContent(layout);
+        
+        //setContent(layout);
+        gridLayout.addComponent(layout);
+        setContent(gridLayout);
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
